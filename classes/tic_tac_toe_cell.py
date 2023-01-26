@@ -1,7 +1,8 @@
 import json
 import pygame
 
-class TicTacToeCell():
+
+class TicTacToeCell:
 
     config_path = "../config/classes_config.json"
 
@@ -42,10 +43,10 @@ class TicTacToeCell():
         if self.winner:
             img = self.player1_img if self.winner == 1 else self.player2_img
             self.image = img
-        else:
+        else:  # not filled yet
             if self.available:
                 bg_color = self.available_bg_color
-            else:
+            else:  # unavailable and not filled yet
                 bg_color = self.unfilled_bg_color
             self.image.fill(bg_color)
         screen.blit(self.image, self.rect)
@@ -63,10 +64,10 @@ if __name__ == "__main__":
     clock = pygame.time.Clock()
 
     random_cells = [
-        TicTacToeCell(tl=(300,300), width=250),
-        TicTacToeCell(tl=(50,50), width=100),
-        TicTacToeCell(tl=(10,400), width=150),
-        TicTacToeCell(tl=(500,20), width=80)
+        TicTacToeCell(tl=(300, 300), width=250),
+        TicTacToeCell(tl=(50, 50), width=100),
+        TicTacToeCell(tl=(10, 400), width=150),
+        TicTacToeCell(tl=(500, 20), width=80)
     ]
     random_cells[0].update(state=0)
     random_cells[1].update(state=1)
