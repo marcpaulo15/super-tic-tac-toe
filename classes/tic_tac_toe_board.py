@@ -13,15 +13,45 @@ class TicTacToeBoard(TicTacToeBasicBoard):
 
         with open(TicTacToeBoard.config_path, 'r') as config_file:
             config = json.load(config_file)
-        intra_dist_pct = config['intra_cell_dist_pct']
+        dist_pct = config['intra_cell_dist_pct']
+
+        cell_width = (width * (1-dist_pct)) // 3
+        cell_dist = (width*dist_pct) // 4
+
+        self.big_cell = TicTacToeCell(
+            tl=(cell_dist + tl[0], cell_dist + tl[1]),
+            width=(3*cell_width + 2*cell_dist)
+        )
 
         self.board = [
             TicTacToeCell(
-                tl=(tl[0] + (i%3)*width/3, tl[1] + (i//3)*width/3),
-                width=(width * (1-intra_dist_pct)) // 3
+                tl=(
+                    cell_dist + tl[0] + (i % 3)*(cell_width+cell_dist),
+                    cell_dist + tl[1] + (i//3)*(cell_width+cell_dist)
+                ),
+                width=(width * (1-dist_pct)) // 3
             )
             for i in range(9)
         ]
+
+    def update(self, state, cell=None):
+        # TODO: review logic
+        # state = {-1: unavailable, 0: available, 1: winner1, 2: winner2}
+        if cell is None:
+            if state in (-1, 0):  # update the board (all the cells)
+                for _cell in self.board:
+                    _cell.update(state=state)
+            else:  # state in (1, 2): local win
+                self.big_cell.update(state)
+        else:  # update only the given cell
+            self.board[cell].update(state=state)
+
+    def draw(self, screen):
+        if self.big_cell.winner:
+            self.big_cell.draw(screen)
+        else:
+            for cell in self.board:
+                cell.draw(screen)
 
 
 if __name__ == "__main__":
