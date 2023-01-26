@@ -1,0 +1,10 @@
+{
+  "available_bg_color": [204, 255, 204],
+  "unfilled_bg_color":[192, 192, 192],
+  "filled_gb_color": [255, 255, 255],
+  "player1_img": "../images/player1.jpg",
+  "player2_img": "../images/player2.jpg",
+  "edge_color": [255, 0, 0],
+  "intra_cell_dist_pct": 0.15,
+  "intra_board_dist_pct": 0.05
+}
