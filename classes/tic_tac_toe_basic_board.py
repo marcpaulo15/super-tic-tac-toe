@@ -1,5 +1,5 @@
 
-class TicTacToeBasicBoard():
+class TicTacToeBasicBoard:
     # Parent class for TicTacToeBoard and SuperTicTacToeBoard
     # TODO: try to merge everything into this class:
     # board_type="local" or "global" to set the element_class and distance_pct
@@ -36,8 +36,4 @@ class TicTacToeBasicBoard():
 
     def __getitem__(self, idx):
         # index directly on board attribute
-        return self.board[idx]
-
-    def draw(self, screen):
-        for element in self.board:
-            element.draw(screen)
+        return self.board[idx]  # local_board or cell
