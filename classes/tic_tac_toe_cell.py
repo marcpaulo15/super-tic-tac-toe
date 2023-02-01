@@ -19,9 +19,10 @@ class TicTacToeCell:
         available - whether the cell can be filled in the current turn
 
     TicTacToeCell Methods:
-        winner    - return value of _winner
-        update    - updates the cell state: _winner, available attributes
-        draw      - displays the cell (square) depending on the _winner value
+        winner        - return value of _winner
+        update        - updates the cell state: _winner, available attributes
+        draw          - displays the cell depending on its _winner value
+        collidepoint  - checks whether a given point collides with the cell
     """
 
     def __init__(self,
@@ -30,7 +31,7 @@ class TicTacToeCell:
                  config_path: str = "../config/classes_config.json"
                  ) -> None:
         """
-        Inits TicTacToeCell instance at a given location with a given width
+        Inits a TicTacToeCell instance at a given location with a given width
 
         :param topleft: coordinates of the top-left corner of the cell
         :param width: length of the square defining the cell's shape
@@ -70,7 +71,7 @@ class TicTacToeCell:
         Updates the state of the cell, defined by attributes available, _winner
         :param state: -1 if unavailable, 0 if available, 1|2 if filled
         :return: None
-        :raises: ValueError if state not in (-1,0,1,2)
+        :raise: ValueError if state not in (-1,0,1,2)
         """
 
         # NOTE: if the cell has a winner (_winner != 0), availability does not
@@ -103,6 +104,15 @@ class TicTacToeCell:
                 bg_color = self._unavailable_bg_color
             self._image.fill(bg_color)
         screen.blit(self._image, self._rect)
+
+    def collidepoint(self, point: Tuple[float, float]) -> bool:
+        """
+        Checks if a given point collides with the cell surface (_rect)
+        :param point: (x,y) coordinates of a point in the screen
+        :return: True if the point is inside the cell boundaries
+        """
+
+        return self._rect.collidepoint(point)
 
 
 if __name__ == "__main__":
