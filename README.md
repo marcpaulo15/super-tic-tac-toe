@@ -3,7 +3,7 @@ The aim of this project is to develop the Python code to play the [Super Tic Tac
 It uses the [Pygame](https://www.pygame.org/docs/) module, and allows the players to customize the game.
 The figure below shows a screenshot of an ongoing game.
 
-Run the ```/scripts/game_runner.py``` and give it a try! :)
+Run the [```/scripts/game_runner.py```](/scripts/game_runner.py) and give it a try! :)
 
 <img src="./doc/game_intro.png" title="Example: ongoing game" width="400"/>
 
@@ -39,7 +39,7 @@ tree, and winning in the global board).
 
 ## Code
 The code has been organized following the *Object-Oriented Programming (OOP)* paradigm.
-The logic of the game is split into *five classes* that can be found in the ```/classes``` directory. Each class implements a different concept and
+The logic of the game is split into *five classes* that can be found in the [```/classes```](/classes) directory. Each class implements a different concept and
 might use or depend on other classes. Each module has its ```main``` function with a short *demo* on how the module works. Feel free to run each file as
 many times as you need to fully understand how it is used.
 
@@ -51,12 +51,12 @@ between classes. In the next paragraphs, each module will be explained in more d
 
 <img src="./doc/diagram.png" title="structure" width="500"/>
 
-* **TicTacToeCell:** implements the behaviour of a Cell in a Tic-Tac-Toe board. The state of a cell
+* [**TicTacToeCell:**](/classes/tic_tac_toe_cell.py) implements the behaviour of a Cell in a Tic-Tac-Toe board. The state of a cell
 can be *unfilled* (not chosen yet), *available* (if it is unfilled and is allowed to be chosen by the
 active player in current turn), or *filled* by either player1 or player2 (the player marking the cell is said to be the "winner" of the cell). 
 The ```update``` method allows to change the cell state. The ```draw``` method displays a {*width*}x{*width*} square whose content depends on the cell state.
 
-* **TicTacToeBasicBoard:** implements the basic functionalities that both *local* and *global boards* share in a
+* [**TicTacToeBasicBoard:**](/classes/tic_tac_toe_basic_board.py) implements the basic functionalities that both *local* and *global boards* share in a
 Super Tic-Tac-Toe game. It serves as a *Parent Class* for the TicTacToeBoard and
 SuperTicTacToeBoard classes. The main method here is ```winner```, which returns the winner of the
 game (if any) or whether the game is a draw. The winner method is implemented following a simple
@@ -64,7 +64,7 @@ recursive approach which is based on the fact that *a cell is to a local board a
 is to a global board*. This way we can call this method from the global board and trigger that same method
 through different layers of the game’s logic: global board -> local boards -> cells.
 
-* **TicTacToeBoard:** implements the behaviour of a local board in a Super Tic-Tac-Toe game
+* [**TicTacToeBoard:**](/classes/tic_tac_toe_board.py) implements the behaviour of a local board in a Super Tic-Tac-Toe game
 (equivalent to the main board in a common Tic-Tac-Toe game). It inherits some
 functionalities from its parent class ```TicTacToeBasicBoard```. The ```board``` attribute in a local board is
 composed of nine ```TicTacToeCell``` instances arranged in a 3x3 grid. The ```update``` method allows to update
@@ -72,25 +72,25 @@ the availability of the local board or the winner (marker) of a given cell. When
 from a global board perspective it is regarded as a (big) cell, not a local board anymore. The ```draw``` method 
 displays all the cells in the local board. But if there is a local winner, it plays the role of a Cell. 
 
-* **SuperTicTacToeBoard:** implements the behaviour of a global board in a Super Tic-Tac-Toe
+* [**SuperTicTacToeBoard:**](/classes/super_tic_tac_toe_board.py) implements the behaviour of a global board in a Super Tic-Tac-Toe
 game. It inherits some functionalities from its parent class ```TicTacToeBasicBoard```. The ```board``` attribute
 in a global board is composed of nine ```TicTacToeBoard``` instances arranged in a 3x3 grid.
 The ```update``` method allows to update the availability of a given local board, or the winner of a given cell. 
 The ```draw``` method displays all the local boards in the global board.
 
-* **GameHandler**: implements the main flow of the game. There are four main methods: ```process_events``` to capture mouse clicks,
+* [**GameHandler**:](/classes/game_handler.py) implements the main flow of the game. There are four main methods: ```process_events``` to capture mouse clicks,
 ```run_logic``` to process the turns taken by the players, ```draw``` to display the game elements (board + game information + new_game button).
 Finally, the ```run``` method gathers the previous three methods and runs the main loop.
 
-* **config:** *json* file that allows the players to customize their game without
+* [**config:**](/config/config.json) *json* file that allows the players to customize their game without
 having to change anything in the code. A more detailed explanation about the
 customization process can be found in a subsequent section.
 
 ## Running The Game
-In the ```/scripts``` directory there is a file named ```game_runner.py```.
+In the [```/scripts```](/scripts) directory there is a file named [```game_runner.py```](/scripts/game_runner.py).
 Run this file in order to play the game. Basically, it initializes a ```GameHandler``` instance
 and calls its ```run``` method. The same behaviour (running the game)
-is obtained when running the ```main``` function in the ```/classes/game_handler.py``` file.
+is obtained when running the ```main``` function in the [```/classes/game_handler.py```](/classes/game_handler.py) file.
 
 Here is an example of a game won by Player *O*:
 
@@ -101,13 +101,13 @@ Here is an example of a game that ends in a draw:
 <img src="./doc/game_draw.png" title="game draw" width="400"/>
 
 ## Customizing Your Game
-In the ```/config``` folder there is the configuration file named 
-```config.json```. This file contains the parameters of the game that 
+In the [```/config```](/config) directory there is the configuration file named 
+[```config.json```](/config/config.json). This file contains the parameters of the game that 
 the users are allowed to customize. 
 
 The colors are in RGB format and the values of each component range from 0 to 255. Almost every color and length can
 be personalized, even the images for player1 and player2! Place your favourite audios and images inside
-the ```/audio``` and ```/image``` folders respectively, and update the configuration file to select them.
+the [```/audio```](/audio) and [```/images```](/images) folders respectively, and update the configuration file to select them.
 
 Remember to make sure that the values you use make sense! (for instance, that the board width is lower
 than the dimensions of the screen).
