@@ -25,7 +25,7 @@ class SuperTicTacToeBoard(TicTacToeBasicBoard):
     def __init__(self,
                  topleft: Tuple[float, float],
                  width: int,
-                 config_path: str = "../config/classes_config.json") -> None:
+                 config_path: str = "../config/config.json") -> None:
         """
         Inits a SuperTicTacToeBoard instance at a given location with a given
         width
