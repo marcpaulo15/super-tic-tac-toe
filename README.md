@@ -103,16 +103,17 @@ Here is an example of a game that ends in a draw:
 ## Customizing Your Game
 In the [```/config```](/config) directory there is the configuration file named 
 [```config.json```](/config/config.json). This file contains the parameters of the game that 
-the users are allowed to customize. 
+the users are allowed to customize. Remember to make sure that the values you use make sense! (for instance, that the board width is lower
+than the dimensions of the screen).
 
 The colors are in RGB format and the values of each component range from 0 to 255. Almost every color and length can
 be personalized, even the images for player1 and player2! Place your favourite audios and images inside
 the [```/audio```](/audio) and [```/images```](/images) folders respectively, and update the configuration file to select them.
 
-Remember to make sure that the values you use make sense! (for instance, that the board width is lower
-than the dimensions of the screen).
-
+For instance, have a look at this *awesome* cat-vs-dog setting.
 Feel free to try different combinations to find out which one is your favourite :)
+
+<img src="./doc/cat_vs_dog.png" title="cat-vs-dog" width="400"/>
 
 ## Future Work
 Here you have some suggestions:
