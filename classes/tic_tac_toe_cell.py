@@ -46,8 +46,8 @@ class TicTacToeCell:
         with open(config_path, 'r') as config_file:
             config = json.load(config_file)
         # color of the cell when it is available or unavailable
-        self._available_bg_color = config['available_bg_color']
-        self._unavailable_bg_color = config['unavailable_bg_color']
+        self._available_bg_color = config['available_cell_bg_color']
+        self._unavailable_bg_color = config['unavailable_cell_bg_color']
         player1_img = pygame.image.load(config['player1_img']).convert()
         self._player1_img = pygame.transform.scale(player1_img, (width, width))
         player2_img = pygame.image.load(config['player2_img']).convert()
