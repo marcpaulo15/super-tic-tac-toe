@@ -1,7 +1,9 @@
 # Super Tic-Tac-Toe Game
-The aim of this project is to develop the Python code to play the [Super Tic Tac Toe Game](https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe). 
+The aim of this project is to develop the Python code to play the [Super Tic Tac Toe Game](https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe).
+
 It uses the [Pygame](https://www.pygame.org/docs/) module, and allows the players to customize the game.
-![Example: ongoing game](./doc/game_intro.png)
+
+<img height="100" src="./doc/game_intro.png" title="Example: ongoing game" width="100"/>
 
 ## Game Rules
 
@@ -25,7 +27,7 @@ it can be played again.
 The game starts with *X* (or *O*) playing wherever they want in any of the 81 empty spots. This move
 *"sends"* their opponent to its relative location. For example, if *X* played in the top right square
 of their local board, then *O* needs to play next in any one of the nine available spots in the
-local board at the top right of the global board.
+local board at the top right of the global board. The clearest way to understand this idea is playing the game.
 
 Super Tic-Tac-Toe is significantly more complex than most other variations of Tic-Tac-Toe, as
 there is no clear strategy to play it. This is because of its complicated game branching.
@@ -35,18 +37,20 @@ tree, and winning in the global board).
 
 ## Code
 The code has been organized following the *Object-oriented programming (OOP)* paradigm.
-The logic of the game is split into five classes that can be found in the ```classes``` directory. Each one implements a different concept and
-might use or depend on other ones. The following figure shows the dependencies and
-the hierarchy of the classes. In the next paragraphs, each module will be explained in more detail.
+The logic of the game is split into *five classes* that can be found in the ```classes``` directory. Each class implements a different concept and
+might use or depend on other classes. Each module has its ```main``` function with a short *demo* on how the module works.
+
+The following figure shows the hierarchy and dependencies
+between classes. In the next paragraphs, each module will be explained in more detail.
 
 ![Example: ongoing game](./doc/diagram.png)
 
-**TicTacToeCell:** implements the behaviour of a Cell in a Tic-Tac-Toe board. The state of a cell
+**TicTacToeCell:**implements the behaviour of a Cell in a Tic-Tac-Toe board. The state of a cell
 can be unfilled (not chosen yet), available (if it is unfilled and is allowed to be chosen by the
 active player in current turn), or filled by either player1 or player2. The ```update``` method allows
 to change the cell state. The ```draw``` mehod displays a {*width*}x{*width*} square taking into account the cell state.
 
-**TicTacToeBasicBoard:** implements the basic functionalities that both local and global boards share in a
+* **TicTacToeBasicBoard:** implements the basic functionalities that both local and global boards share in a
 Super Tic-Tac-Toe game. It serves as a *Parent Class* for the TicTacToeBoard and
 SuperTicTacToeBoard classes. The main methods here is ```winner```, which returns the winner of the
 game if any (or if the game is a draw). The winner method is implemented following a simple
@@ -54,7 +58,7 @@ recursive approach which is based on the fact that *a cell is to a local board a
 is to a global board*. This way we can call this method from the global board and triggers that same method
 through different layers of the game’s logic.
 
-**TicTacToeBoard:** implements the behaviour of a local board in a Super Tic-Tac-Toe game
+* **TicTacToeBoard:** implements the behaviour of a local board in a Super Tic-Tac-Toe game
 (equivalent to the main board in a common Tic-Tac-Toe game). It inherits some
 functionalities from its parent class ```TicTacToeBasicBoard```. The ```board``` attribute in a local board is
 composed of nine ```TicTacToeCell``` instances arranged in a 3x3 grid. The ```update``` method allows to update
@@ -62,17 +66,17 @@ the availability of the local board or the winner of a given cell. When a local 
 from a global board perspective it is regarded as a (big) cell, not a local board anymore. The ```draw``` method 
 displays all the cells in the local board. But if there is a local winner, it plays the role of a Cell. 
 
-**SuperTicTacToeBoard:** implements the behaviour of a global board in a Super Tic-Tac-Toe
+* **SuperTicTacToeBoard:** implements the behaviour of a global board in a Super Tic-Tac-Toe
 game. It inherits some functionalities from its parent class ```TicTacToeBasicBoard```. The ```board``` attribute
 in a global board is composed of nine ```TicTacToeBoard``` instances arranged in a 3x3 grid.
 The ```update``` method allows to update the availability of a given local board, or the winner of a given cell. 
 The ```draw``` method displays all the local boards in the global board.
 
-**GameHandler**: implements the main flow of the game. There are four main methods: ```process_events``` to capture mouse clicks,
+* **GameHandler**: implements the main flow of the game. There are four main methods: ```process_events``` to capture mouse clicks,
 ```run_logic``` to process the turns taken by the players, ```draw``` to display the game elements (board + game information + new_game button).
 Finally, the ```run``` method gathers everything and runs the main loop.
 
-**config:** *json* file that allows the players to customize their game without
+* **config:** *json* file that allows the players to customize their game without
 having to change the anything in the code. A comprehensive explanation about the
 customization can be found in a subsequent section.
 
@@ -84,3 +88,11 @@ and calls its ```run``` method.
 ## Customizing Your Game
 
 ## Future Work
+* Implement an *Intelligent Agent* to enable the *human-vs-machine* mode. 
+Different sources suggest relying on [Monte Carlo Tree Search](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search)
+* Improve the *User-Interface* in order to add more functionalites and enhance the user experience.
+* Enable an easier and higher-level way to *custom* the game. 
+In other words, replace the *config.json* file with a more user-friendly approach.
+* Implement other variations of the TicTacToeGame! Using (parts of) this project as a reference.
+One simple an easy suggestion: *Tic-Tac-Ku* 
+(same rules as Super Tic-Tac-Toe, but here a player wins the game by winning at least five local boards.)
