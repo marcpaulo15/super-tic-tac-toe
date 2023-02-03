@@ -3,7 +3,7 @@ The aim of this project is to develop the Python code to play the [Super Tic Tac
 
 It uses the [Pygame](https://www.pygame.org/docs/) module, and allows the players to customize the game.
 
-<img height="100" src="./doc/game_intro.png" title="Example: ongoing game" width="100"/>
+<img src="./doc/game_intro.png" title="Example: ongoing game" width="400"/>
 
 ## Game Rules
 
@@ -37,15 +37,15 @@ tree, and winning in the global board).
 
 ## Code
 The code has been organized following the *Object-oriented programming (OOP)* paradigm.
-The logic of the game is split into *five classes* that can be found in the ```classes``` directory. Each class implements a different concept and
+The logic of the game is split into *five classes* that can be found in the ```/classes``` directory. Each class implements a different concept and
 might use or depend on other classes. Each module has its ```main``` function with a short *demo* on how the module works.
 
 The following figure shows the hierarchy and dependencies
 between classes. In the next paragraphs, each module will be explained in more detail.
 
-![Example: ongoing game](./doc/diagram.png)
+<img src="./doc/diagram.png" title="structure" width="500"/>
 
-**TicTacToeCell:**implements the behaviour of a Cell in a Tic-Tac-Toe board. The state of a cell
+* **TicTacToeCell:** implements the behaviour of a Cell in a Tic-Tac-Toe board. The state of a cell
 can be unfilled (not chosen yet), available (if it is unfilled and is allowed to be chosen by the
 active player in current turn), or filled by either player1 or player2. The ```update``` method allows
 to change the cell state. The ```draw``` mehod displays a {*width*}x{*width*} square taking into account the cell state.
@@ -89,7 +89,7 @@ and calls its ```run``` method.
 
 ## Future Work
 * Implement an *Intelligent Agent* to enable the *human-vs-machine* mode. 
-Different sources suggest relying on [Monte Carlo Tree Search](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search)
+Different sources suggest relying on [Monte Carlo Tree Search](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search) heuristics.
 * Improve the *User-Interface* in order to add more functionalites and enhance the user experience.
 * Enable an easier and higher-level way to *custom* the game. 
 In other words, replace the *config.json* file with a more user-friendly approach.
