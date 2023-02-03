@@ -32,6 +32,7 @@ class TicTacToeBasicBoard:
     def winner(self):
         """
         Check if there is a winner or game is draw based on the current board
+
         :return: -1 if the game is a draw, 0 if the game is running,
             1 if player1 has won, 2 if player2 has won
         """
