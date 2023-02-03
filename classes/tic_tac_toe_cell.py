@@ -61,6 +61,7 @@ class TicTacToeCell:
         """
         Returns the value of _winner. This method follows the structure of the
         TicTacToeBasicBoard class, so it can be called recursively.
+
         :return: int: _winner value
         """
 
@@ -69,6 +70,7 @@ class TicTacToeCell:
     def update(self, state: int) -> None:
         """
         Updates the state of the cell, defined by attributes available, _winner
+
         :param state: -1 if unavailable, 0 if available, 1|2 if filled
         :return: None
         :raise: ValueError if state not in (-1,0,1,2)
@@ -88,6 +90,7 @@ class TicTacToeCell:
     def draw(self, screen: pygame.Surface) -> None:
         """
         Displays the cell on the given surface
+
         :param screen: pygame Surface where the cell is placed
         :return: None
         """
