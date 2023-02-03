@@ -15,6 +15,10 @@
   "new_game_button_color": [153, 204, 255],
   "new_game_button_text_color": [0, 0, 0],
   "player1_name": "Alice",
-  "player2_name": "Bob"
-
+  "player2_name": "Bob",
+  "cell_win_sound": "../audio/cell_win.wav",
+  "local_win_sound": "../audio/local_win.wav",
+  "global_win_sound": "../audio/global_win.wav",
+  "is_sound_on": true,
+  "player_starting_the_game": 1
 }

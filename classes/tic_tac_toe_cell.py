@@ -28,7 +28,7 @@ class TicTacToeCell:
     def __init__(self,
                  topleft: Tuple[float, float],
                  width: int,
-                 config_path: str = "../config/classes_config.json"
+                 config_path: str = "../config/config.json"
                  ) -> None:
         """
         Inits a TicTacToeCell instance at a given location with a given width
@@ -113,6 +113,14 @@ class TicTacToeCell:
         """
 
         return self._rect.collidepoint(point)
+
+    def reset(self) -> None:
+        """
+        Resets the cell to the default state (unfilled).
+        Don't update availability.
+        :return: None
+        """
+        self._winner = 0
 
 
 if __name__ == "__main__":
