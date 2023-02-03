@@ -86,10 +86,16 @@ class SuperTicTacToeBoard(TicTacToeBasicBoard):
         elif local_board is None and cell is not None:
             # a cell is given but its local board is missing
             raise ValueError("Provide a local board for the given cell")
-        else:  # local board is not None
-            # if the cell is None, updates the state of the given local board
-            # if the cell is not None, updates the state of the given cell
+        else:  # local board is not None, mark the cell
             self.board[local_board].update(state=state, cell=cell)
+            if self.board[local_board].winner() > 0:
+                # update the local board
+                self.board[local_board].big_cell.update(
+                    state=self.board[local_board].winner())
+            elif self.board[local_board].winner() == -1:  # local game is draw
+                # reset the local board
+                for _cell in self.board[local_board]:
+                    _cell.reset()
 
     def draw(self, screen: pygame.Surface) -> None:
         """
