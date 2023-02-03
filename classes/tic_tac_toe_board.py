@@ -88,10 +88,6 @@ class TicTacToeBoard(TicTacToeBasicBoard):
                 self.board[cell].update(state=state)
             else:  # availability can't be set to a specific cell but the board
                 raise ValueError("wrong value for the cell state in the board")
-        # TODO: move this to another place
-        # update local winner
-        if self.winner():
-            self.big_cell.update(state=self.winner())
 
     def draw(self, screen: pygame.Surface) -> None:
         """
