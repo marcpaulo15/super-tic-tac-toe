@@ -23,7 +23,6 @@ class TicTacToeBoard(TicTacToeBasicBoard):
 
     # Percentage of the width that used to create a separation between cells
     cell_dist_pct = 0.10
-    # TODO: try to use this attr in SuperTicTacToeBoard as well
 
     def __init__(self, topleft: Tuple[float, float], width: int) -> None:
         """
@@ -41,8 +40,8 @@ class TicTacToeBoard(TicTacToeBasicBoard):
         # there is a separation at both extremes and between cells
         cell_dist = (width * TicTacToeBoard.cell_dist_pct) // 4
 
-        # defined a (big) cell with the same shape as the board. When the board
-        # has winner, it will act as a filled cell in the global board
+        # define a (big) cell with the same shape as the board. When the local
+        # board has winner, it will act as a filled cell in the global board
         self.big_cell = TicTacToeCell(
             topleft=(cell_dist + topleft[0], cell_dist + topleft[1]),
             width=(3 * cell_width + 2 * cell_dist)
@@ -65,10 +64,10 @@ class TicTacToeBoard(TicTacToeBasicBoard):
         Otherwise, update the overall state of the board (availability).
 
         :param state: -1 if board is unavailable, 0 if board available, 1|2 if
-            a given cell is filled
+            the given cell is filled
         :param cell: index of cell that has been filled (state is 1|2)
         :return: None
-        :raise: ValueError if (state in (-1,0) and cell is None)
+        :raise: ValueError if (state in (-1,0) and cell is not None)
             or (state in (1,2) and cell is None)
         """
 
@@ -82,7 +81,7 @@ class TicTacToeBoard(TicTacToeBasicBoard):
                 raise ValueError("wrong value for board availability")
         else:  # a cell is provided
             # update the state of the given cell (filled by player1 or player2)
-            # NOTE: can't set the cell state to 1|2, availability is an
+            # NOTE: can't set the cell state to -1|0, availability is an
             # attribute of the board. Its cells are either all available or not
             if state in (1, 2):
                 self.board[cell].update(state=state)
