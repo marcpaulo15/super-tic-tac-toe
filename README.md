@@ -45,7 +45,7 @@ between classes. In the next paragraphs, each module will be explained in more d
 
 ![Example: ongoing game](./doc/diagram.png)
 
-**TicTacToeCell:**implements the behaviour of a Cell in a Tic-Tac-Toe board. The state of a cell
+* **TicTacToeCell:**implements the behaviour of a Cell in a Tic-Tac-Toe board. The state of a cell
 can be unfilled (not chosen yet), available (if it is unfilled and is allowed to be chosen by the
 active player in current turn), or filled by either player1 or player2. The ```update``` method allows
 to change the cell state. The ```draw``` mehod displays a {*width*}x{*width*} square taking into account the cell state.
@@ -83,14 +83,16 @@ customization can be found in a subsequent section.
 ## Running The Game
 In the ```scripts``` directory there is a file named ```game_runner.py```.
 Run this file in order to play the game. Basically, it initializes a ```GameHandler``` instance
-and calls its ```run``` method.
+and calls its ```run``` method. The same behaviour (running the game)
+is obtained when running the ```main``` function in the ```/classes/GameHandler.py``` file.
 
 ## Customizing Your Game
+
 
 ## Future Work
 * Implement an *Intelligent Agent* to enable the *human-vs-machine* mode. 
 Different sources suggest relying on [Monte Carlo Tree Search](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search)
-* Improve the *User-Interface* in order to add more functionalites and enhance the user experience.
+* Improve the *User-Interface* in order to add more functionalities and enhance the user experience.
 * Enable an easier and higher-level way to *custom* the game. 
 In other words, replace the *config.json* file with a more user-friendly approach.
 * Implement other variations of the TicTacToeGame! Using (parts of) this project as a reference.
