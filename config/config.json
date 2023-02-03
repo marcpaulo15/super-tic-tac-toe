@@ -1,0 +1,23 @@
+{
+  "available_cell_bg_color": [185, 206, 172],
+  "unavailable_cell_bg_color":[220, 220, 220],
+  "player1_img": "../images/player1.jpg",
+  "player2_img": "../images/player2.jpg",
+  "text_font": "comicsans",
+  "text_font_size": 50,
+  "text_color": [0, 0, 0],
+  "new_game_button_color": [153, 204, 255],
+  "new_game_button_text_color": [0, 0, 0],
+  "edge_color": [50, 50, 50],
+  "screen_bg_color": [255, 255, 255],
+  "screen_width": 800,
+  "screen_height": 800,
+  "board_topleft": [100, 150],
+  "board_width": 600,
+  "cell_win_sound": "../audio/cell_win.wav",
+  "local_win_sound": "../audio/local_win.wav",
+  "global_win_sound": "../audio/global_win.wav",
+  "is_sound_on": true,
+  "player_starting_the_game": 1,
+  "title": "~ SUPER TIC-TAC-TOE ~"
+}
