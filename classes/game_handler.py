@@ -28,6 +28,11 @@ class GameHandler:
 
     def __init__(self,
                  config_path: str = "../config/config.json") -> None:
+        """
+        Inits a GameHandler instance
+
+        :param config_path: path from where to read the configuration file
+        """
 
         with open(config_path, 'r') as config_file:
             config = json.load(config_file)
@@ -39,7 +44,7 @@ class GameHandler:
         self.screen = pygame.display.set_mode((screen_width, screen_height))
         pygame.display.set_caption(config['title'])
 
-        # Create the (global) Super TicTacToe game
+        # Create the (global) Super TicTacToe board
         self.board = SuperTicTacToeBoard(
             topleft=config['board_topleft'], width=config['board_width']
         )
@@ -191,7 +196,6 @@ class GameHandler:
         # Mark the cell with the given player
         self.board.update(state=player, local_board=local_board, cell=cell)
 
-        # Update the board accordingly and play sounds
         # check the state of the boards once the new cell is marked
         if self.board.winner() > 0:  # the game has a winner
             # set the winner icon to be displayed
@@ -205,15 +209,16 @@ class GameHandler:
 
     def _process_turn(self) -> None:
         """
-        Process a mouse click that has not clicked the new_game button. If an
-        available cell has been selected, update the board and the game params
-        accordingly to go on with the game. Else, do nothing.
+        Check if the mouse_pos collides with any available cell. If that is the
+        case, update the board and the game params accordingly to go on with
+        the game. If the mouse_pos clicks on an unavailable cell or outside the
+        board, do nothing (wait for the next mouse click)
 
         :return: None
         """
 
         # 1) check that the mouse clicked on an available cell
-        local_board, cell = self._get_board_and_cell_from_mouse()
+        local_board, cell = self._get_board_and_cell_from_mouse_pos()
         if local_board == -1 or cell == -1:
             # -1 means that no available cell was selected
             return  # there is nothing to process, wait for the next click
@@ -233,7 +238,7 @@ class GameHandler:
         self._update_availability(make_available=True)
         # 7) The next player is ready to take turn
 
-    def _get_board_and_cell_from_mouse(self) -> Tuple[int, int]:
+    def _get_board_and_cell_from_mouse_pos(self) -> Tuple[int, int]:
         """
         Assuming that self.mouse_pos is not None, check if the mouse position
         collides with any available cell. Returns the cell_id and the
@@ -255,7 +260,7 @@ class GameHandler:
         """
         Displays information about the state of the game. If the game is
         running, tells which player takes turn. If there is a winner, announce
-        the winner. If the game is a draw, inform the players
+        the winner. If the game is a draw, inform the players about it.
 
         :param screen: pygame surface where the text is displayed
         :return: None
@@ -309,6 +314,7 @@ class GameHandler:
             self._process_turn()
         # return to default value, wait for the next mouse click
         self.mouse_pos = None
+
     def draw(self, screen: pygame.Surface) -> None:
         """
         Displays the game's elements on the given surface.
