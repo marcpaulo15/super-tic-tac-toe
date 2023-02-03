@@ -100,6 +100,7 @@ class SuperTicTacToeBoard(TicTacToeBasicBoard):
     def draw(self, screen: pygame.Surface) -> None:
         """
         Displays the global board on the given surface.
+
         :param screen: pygame Surface where the global board is placed
         :return: None
         """
