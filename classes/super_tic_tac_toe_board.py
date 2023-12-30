@@ -1,8 +1,8 @@
 import pygame
 import json
 from typing import Tuple, Optional
-from tic_tac_toe_board import TicTacToeBoard
-from tic_tac_toe_basic_board import TicTacToeBasicBoard
+from classes.tic_tac_toe_board import TicTacToeBoard
+from classes.tic_tac_toe_basic_board import TicTacToeBasicBoard
 
 
 class SuperTicTacToeBoard(TicTacToeBasicBoard):

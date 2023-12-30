@@ -1,7 +1,7 @@
 import pygame
 from typing import Optional, Tuple
-from tic_tac_toe_cell import TicTacToeCell
-from tic_tac_toe_basic_board import TicTacToeBasicBoard
+from classes.tic_tac_toe_cell import TicTacToeCell
+from classes.tic_tac_toe_basic_board import TicTacToeBasicBoard
 
 
 class TicTacToeBoard(TicTacToeBasicBoard):

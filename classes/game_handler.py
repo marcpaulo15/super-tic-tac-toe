@@ -1,8 +1,8 @@
 import pygame
 import json
 from typing import Tuple
-from super_tic_tac_toe_board import SuperTicTacToeBoard
-from tic_tac_toe_cell import TicTacToeCell
+from classes.super_tic_tac_toe_board import SuperTicTacToeBoard
+from classes.tic_tac_toe_cell import TicTacToeCell
 
 
 class GameHandler:

@@ -1,6 +1,4 @@
-import sys
-sys.path.insert(0, '../classes')
-from game_handler import GameHandler
+from classes.game_handler import GameHandler
 
 
 if __name__ == "__main__":
